@@ -9,13 +9,13 @@ public class User {
     private int followersCount;
     private int followingCount;
 
-    // Конструктор по умолчанию
+
     public User() {
         this.followersCount = 0;
         this.followingCount = 0;
     }
 
-    // Конструктор с параметрами
+
     public User(String id, String username, String fullName, String bio) {
         this.id = id;
         this.username = username;
@@ -26,7 +26,6 @@ public class User {
         this.profilePhoto = null;
     }
 
-    // Геттеры и сеттеры
     public String getId() {
         return id;
     }
@@ -83,7 +82,7 @@ public class User {
         this.followingCount = followingCount;
     }
 
-    // Методы для работы с подписчиками и подписками
+
     public void addFollower() {
         this.followersCount++;
     }
@@ -104,7 +103,7 @@ public class User {
         }
     }
 
-    // Метод для проверки валидности пользователя
+
     public boolean isValid() {
         return id != null && username != null && !username.trim().isEmpty();
     }
@@ -122,4 +121,3 @@ public class User {
                 '}';
     }
 }
-// Убедитесь, что здесь нет лишних фигурных скобок!

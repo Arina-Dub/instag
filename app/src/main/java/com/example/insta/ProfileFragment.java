@@ -56,7 +56,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        // Загружаем данные только если они еще не загружены или требуется обновление
+
         if (!isDataLoaded) {
             refreshData();
             isDataLoaded = true;
@@ -75,12 +75,11 @@ public class ProfileFragment extends Fragment {
             btnEditProfile = view.findViewById(R.id.btnEditProfile);
             recyclerViewPosts = view.findViewById(R.id.recyclerViewPosts);
 
-            // Устанавливаем начальные значения для счетчиков
+
             safeSetText(tvPostsCount, "0");
             safeSetText(tvFollowers, "0");
             safeSetText(tvFollowing, "0");
 
-            // Обработчики кликов на счетчики
             if (tvFollowers != null) {
                 tvFollowers.setOnClickListener(v -> openFollowers());
             }
@@ -89,7 +88,7 @@ public class ProfileFragment extends Fragment {
                 tvFollowing.setOnClickListener(v -> openFollowing());
             }
 
-            // Обработчики кликов на подписи
+
             View followersLabel = view.findViewById(R.id.followersLabel);
             if (followersLabel != null) {
                 followersLabel.setOnClickListener(v -> openFollowers());
@@ -188,7 +187,7 @@ public class ProfileFragment extends Fragment {
                 if (currentUser != null && currentUser.getUsername() != null) {
                     String currentUsername = currentUser.getUsername();
 
-                    // Загрузка постов пользователя
+
                     List<Post> loadedPosts = loadPostsForUser(currentUsername);
                     userPosts.addAll(loadedPosts);
 
@@ -211,7 +210,7 @@ public class ProfileFragment extends Fragment {
         List<Post> posts = new ArrayList<>();
 
         try {
-            // Реальная логика загрузки постов (замените на вашу)
+   
             if ("alex".equals(username)) {
                 Post post1 = new Post("1", username, username, android.R.drawable.ic_menu_camera, "Мой первый пост!");
                 post1.addLike("maria");
@@ -245,7 +244,7 @@ public class ProfileFragment extends Fragment {
     private void updateCounters() {
         try {
             if (currentUser != null) {
-                // Обновляем счетчики из данных пользователя
+
                 int postsCount = userPosts != null ? userPosts.size() : 0;
                 int followersCount = currentUser.getFollowersCount();
                 int followingCount = currentUser.getFollowingCount();
@@ -298,11 +297,11 @@ public class ProfileFragment extends Fragment {
         try {
             if (getActivity() != null) {
                 Intent intent = new Intent(getActivity(), EditProfileActivity.class);
-                // Передаем текущего пользователя для редактирования
+
                 if (currentUser != null) {
                     intent.putExtra("user_id", currentUser.getId());
                 }
-                startActivityForResult(intent, 1); // Используем startActivityForResult для обновления после редактирования
+                startActivityForResult(intent, 1); 
             }
         } catch (Exception e) {
             Log.e("ProfileFragment", "Error opening edit profile", e);
@@ -313,7 +312,7 @@ public class ProfileFragment extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        // Обновляем данные после возврата из EditProfileActivity
+
         if (requestCode == 1) {
             refreshData();
         }
@@ -322,7 +321,7 @@ public class ProfileFragment extends Fragment {
     public void refreshData() {
         try {
             if (isAdded() && getActivity() != null) {
-                isDataLoaded = false; // Сбрасываем флаг для принудительной перезагрузки
+                isDataLoaded = false; 
                 loadUserData();
                 loadUserPosts();
                 isDataLoaded = true;
@@ -333,7 +332,7 @@ public class ProfileFragment extends Fragment {
         }
     }
 
-    // Метод для принудительного обновления извне
+
     public void forceRefresh() {
         isDataLoaded = false;
         refreshData();

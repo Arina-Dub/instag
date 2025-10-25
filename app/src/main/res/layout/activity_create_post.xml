@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Кнопка выбора изображения -->
+        <Button
+            android:id="@+id/btnSelectImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Выбрать изображение"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Опции камеры/галереи -->
+        <LinearLayout
+            android:id="@+id/layoutCameraOptions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btnTakePhoto"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Камера"
+                android:layout_marginEnd="8dp" />
+
+            <Button
+                android:id="@+id/btnChooseFromGallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Галерея"
+                android:layout_marginStart="8dp" />
+
+        </LinearLayout>
+
+        <!-- Выбранное изображение -->
+        <ImageView
+            android:id="@+id/ivSelectedImage"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:scaleType="centerCrop"
+            android:background="@color/gray"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Описание -->
+        <EditText
+            android:id="@+id/etCaption"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Добавьте описание..."
+            android:minHeight="100dp"
+            android:gravity="top"
+            android:layout_marginBottom="16dp" />
+
+        <!-- Кнопка публикации -->
+        <Button
+            android:id="@+id/btnPost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Опубликовать"
+            android:enabled="false"
+            android:backgroundTint="@color/blue" />
+
+    </LinearLayout>
+
+</ScrollView>

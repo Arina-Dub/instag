@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Контейнер для превью камеры -->
+    <FrameLayout
+        android:id="@+id/cameraPreviewLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Верхняя панель -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:background="@color/transparent_black">
+
+        <Button
+            android:id="@+id/btnCloseCamera"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="X"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:background="@color/transparent_black" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Button
+            android:id="@+id/btnSwitchCamera"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:text="Switch"
+            android:textSize="14sp"
+            android:textColor="@color/white"
+            android:background="@color/transparent_black" />
+
+    </LinearLayout>
+
+    <!-- Нижняя панель -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparent_black"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCapture"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:background="@drawable/camera_capture_button" />
+
+    </LinearLayout>
+
+</RelativeLayout>

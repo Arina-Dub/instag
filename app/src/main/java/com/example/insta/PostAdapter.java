@@ -54,16 +54,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         holder.tvCaption.setText(post.getCaption());
         holder.tvLikesCount.setText(post.getLikesCount() + " лайков");
 
-        // Устанавливаем изображение поста
         if (post.hasImageResource()) {
-            // Используем локальный ресурс
             holder.ivPostImage.setImageResource(post.getImageResource());
         } else {
-            // Используем стандартное изображение если URL не доступен
+
             holder.ivPostImage.setImageResource(android.R.color.darker_gray);
         }
 
-        // Устанавливаем иконку лайка в зависимости от состояния
         if (post.isLikedByUser(currentUserId)) {
             holder.ivLike.setImageResource(android.R.drawable.btn_star_big_on);
         } else {

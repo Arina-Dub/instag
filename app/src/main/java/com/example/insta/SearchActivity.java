@@ -60,7 +60,6 @@ public class SearchActivity extends AppCompatActivity {
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
             recyclerView.setAdapter(userAdapter);
 
-            // Показываем всех пользователей при запуске
             List<User> allUsers = userManager.getAllUsers();
             if (allUsers.isEmpty()) {
                 Toast.makeText(this, "Пользователи не найдены", Toast.LENGTH_SHORT).show();

@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         User newUser = new User(
-                String.valueOf(System.currentTimeMillis()), // Генерируем ID
+                String.valueOf(System.currentTimeMillis()), 
                 username,
                 email,
                 fullName

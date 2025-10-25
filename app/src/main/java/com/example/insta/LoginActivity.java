@@ -29,8 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         userManager = new UserManager(this);
         initViews();
         setupClickListeners();
-        createTestUsers(); // Создаем тестовых пользователей
-    }
+        createTestUsers();
 
     private void initViews() {
         etUsername = findViewById(R.id.etUsername);
@@ -73,8 +72,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-    // Создаем тестовых пользователей
-    // В методе createTestUsers() в LoginActivity.java
     private void createTestUsers() {
         List<User> existingUsers = userManager.getAllUsers();
         if (existingUsers.isEmpty()) {

@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // ИЗМЕНИТЕ С private НА public
     public void loadFragment(Fragment fragment) {
         try {
             getSupportFragmentManager().beginTransaction()

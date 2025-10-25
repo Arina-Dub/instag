@@ -57,7 +57,6 @@ public class CreatePostActivity extends AppCompatActivity {
     }
 
     private void setupClickListeners() {
-        // Кнопка выбора изображения
         findViewById(R.id.btnSelectImage).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,7 +64,6 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-        // Кнопка камеры
         findViewById(R.id.btnTakePhoto).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +71,6 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-        // Кнопка галереи
         findViewById(R.id.btnChooseFromGallery).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -81,7 +78,6 @@ public class CreatePostActivity extends AppCompatActivity {
             }
         });
 
-        // Кнопка публикации
         btnPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -174,13 +170,13 @@ public class CreatePostActivity extends AppCompatActivity {
             layoutCameraOptions.setVisibility(View.GONE);
 
             if (requestCode == REQUEST_CAMERA) {
-                // Фото с системной камеры
+   
                 if (currentPhotoPath != null) {
                     ivSelectedImage.setImageURI(Uri.parse(currentPhotoPath));
                     btnPost.setEnabled(true);
                 }
             } else if (requestCode == REQUEST_GALLERY) {
-                // Фото из галереи
+
                 if (data != null && data.getData() != null) {
                     Uri selectedImageUri = data.getData();
                     ivSelectedImage.setImageURI(selectedImageUri);
@@ -188,7 +184,7 @@ public class CreatePostActivity extends AppCompatActivity {
                     btnPost.setEnabled(true);
                 }
             } else if (requestCode == REQUEST_CAMERA_ACTIVITY) {
-                // Фото из нашей камеры
+
                 if (data != null && data.hasExtra("photo_path")) {
                     currentPhotoPath = data.getStringExtra("photo_path");
                     if (currentPhotoPath != null) {
@@ -203,9 +199,9 @@ public class CreatePostActivity extends AppCompatActivity {
         }
     }
 
-    // Вспомогательный метод для получения пути из URI
+
     private String getPathFromUri(Uri contentUri) {
-        // Простая реализация - в реальном приложении нужно использовать ContentResolver
+
         return contentUri.toString();
     }
     private void saveBitmapToFile(Bitmap bitmap) {
@@ -227,12 +223,8 @@ public class CreatePostActivity extends AppCompatActivity {
             return;
         }
 
-        // Здесь должна быть логика сохранения поста
-        // В реальном приложении нужно загружать изображение на сервер
-
         Toast.makeText(this, "Пост опубликован!", Toast.LENGTH_SHORT).show();
 
-        // Возвращаемся на главный экран
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);

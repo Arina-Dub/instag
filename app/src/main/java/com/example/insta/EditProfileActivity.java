@@ -103,18 +103,14 @@ public class EditProfileActivity extends AppCompatActivity {
                 Toast.makeText(this, "Введите имя пользователя", Toast.LENGTH_SHORT).show();
                 return;
             }
-
-            // Обновляем данные пользователя
             currentUser.setUsername(username);
             currentUser.setFullName(fullName);
             currentUser.setBio(bio);
 
-            // Сохраняем новое фото если было выбрано
             if (selectedImageUri != null) {
                 currentUser.setProfilePhoto(selectedImageUri.toString());
             }
 
-            // Сохраняем изменения
             if (userManager.updateUser(currentUser)) {
                 Toast.makeText(this, "Профиль успешно обновлен", Toast.LENGTH_SHORT).show();
                 setResult(RESULT_OK);

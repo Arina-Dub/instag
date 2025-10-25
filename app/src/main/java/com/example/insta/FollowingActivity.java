@@ -78,9 +78,6 @@ public class FollowingActivity extends AppCompatActivity {
         List<User> allUsers = userManager.getAllUsers();
         List<User> followingUsers = new ArrayList<>();
 
-        // В реальном приложении здесь должна быть логика получения подписок из базы
-        // Для демо показываем всех пользователей кроме текущего
-
         User currentUser = userManager.getCurrentUser();
         for (User user : allUsers) {
             if (currentUser == null || !user.getUsername().equals(currentUser.getUsername())) {

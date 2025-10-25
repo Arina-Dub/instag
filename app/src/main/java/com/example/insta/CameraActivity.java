@@ -128,7 +128,6 @@ public class CameraActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
-            // Возвращаем путь к фото в CreatePostActivity
             Intent resultIntent = new Intent();
             resultIntent.putExtra("photo_path", currentPhotoPath);
             setResult(RESULT_OK, resultIntent);

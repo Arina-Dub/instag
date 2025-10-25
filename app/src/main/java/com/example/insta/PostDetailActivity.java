@@ -59,7 +59,6 @@ public class PostDetailActivity extends AppCompatActivity {
             if (intent != null && intent.hasExtra("post_id")) {
                 String postId = intent.getStringExtra("post_id");
 
-                // Создаем тестовый пост с изображением
                 post = new Post(postId, "user1", "alex", android.R.drawable.ic_menu_camera, "Пример поста с изображением");
                 post.addLike("user2");
                 post.addLike("user3");
@@ -82,7 +81,6 @@ public class PostDetailActivity extends AppCompatActivity {
             tvCaption.setText(post.getCaption());
             tvLikesCount.setText(post.getLikesCount() + " лайков");
 
-            // Устанавливаем изображение
             if (post.hasImageResource()) {
                 ivPostImage.setImageResource(post.getImageResource());
             }

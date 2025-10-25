@@ -48,10 +48,8 @@ public class FeedFragment extends Fragment implements PostAdapter.OnPostInteract
     }
 
     private void loadPosts() {
-        // Тестовые данные с реальными изображениями
         postList.clear();
 
-        // Используем системные иконки Android как изображения постов
         Post post1 = new Post("1", "user1", "alex", android.R.drawable.ic_menu_camera, "Мой первый пост с фото!");
         post1.addLike("maria");
         post1.addLike("demo");

@@ -20,7 +20,6 @@ public class UserManager {
         this.sharedPreferences = context.getSharedPreferences("user_prefs", Context.MODE_PRIVATE);
     }
 
-    // Регистрация нового пользователя
     public boolean registerUser(User user) {
         List<User> users = getAllUsers();
 
@@ -30,14 +29,13 @@ public class UserManager {
         return true;
     }
 
-    // Авторизация пользователя
+
     public boolean loginUser(String username, String password) {
         List<User> users = getAllUsers();
 
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                // В реальном приложении здесь должна быть проверка пароля
-                // Для демо считаем, что пароль всегда верный
+
                 setCurrentUser(user);
                 return true;
             }
@@ -45,7 +43,6 @@ public class UserManager {
         return false;
     }
 
-    // Получение текущего пользователя
     public User getCurrentUser() {
         try {
             String userJson = sharedPreferences.getString(CURRENT_USER_KEY, null);
@@ -54,13 +51,13 @@ public class UserManager {
             }
         } catch (Exception e) {
             e.printStackTrace();
-            // Если произошла ошибка парсинга, очищаем некорректные данные
+
             logout();
         }
         return null;
     }
 
-    // Установка текущего пользователя
+
     public void setCurrentUser(User user) {
         try {
             String userJson = userToJson(user);
@@ -74,7 +71,7 @@ public class UserManager {
         }
     }
 
-    // Выход из аккаунта
+
     public void logout() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.remove(CURRENT_USER_KEY);
@@ -83,7 +80,7 @@ public class UserManager {
         editor.apply();
     }
 
-    // Получение пользователя по username
+
     public User getUserByUsername(String username) {
         if (username == null || username.isEmpty()) {
             return null;
@@ -98,7 +95,7 @@ public class UserManager {
         return null;
     }
 
-    // Получение всех пользователей
+
     public List<User> getAllUsers() {
         String usersJson = sharedPreferences.getString(USERS_KEY, "[]");
         List<User> users = new ArrayList<>();
@@ -119,7 +116,6 @@ public class UserManager {
         return users;
     }
 
-    // Сохранение всех пользователей
     private void saveAllUsers(List<User> users) {
         JSONArray jsonArray = new JSONArray();
 
@@ -137,7 +133,6 @@ public class UserManager {
         editor.apply();
     }
 
-    // Обновление данных пользователя
     public boolean updateUser(User user) {
         try {
             SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -156,7 +151,7 @@ public class UserManager {
         }
     }
 
-    // Поиск пользователей
+
     public List<User> searchUsers(String query) {
         if (query == null || query.isEmpty()) {
             return getAllUsers();
@@ -174,7 +169,7 @@ public class UserManager {
         return result;
     }
 
-    // Конвертация User в JSONObject
+
     private JSONObject userToJsonObject(User user) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("id", user.getId() != null ? user.getId() : "");
@@ -187,7 +182,6 @@ public class UserManager {
         return jsonObject;
     }
 
-    // Конвертация User в JSON строку
     private String userToJson(User user) {
         try {
             JSONObject jsonObject = userToJsonObject(user);
@@ -198,11 +192,10 @@ public class UserManager {
         }
     }
 
-    // Конвертация JSON строки в User
+
     private User userFromJson(String json) {
         try {
-            // Проверяем, что это валидный JSON
-            if (json == null || json.isEmpty() || json.trim().charAt(0) != '{') {
+
                 return createDefaultUser();
             }
 
@@ -224,7 +217,7 @@ public class UserManager {
         }
     }
 
-    // Создание пользователя по умолчанию при ошибке парсинга
+
     private User createDefaultUser() {
         User user = new User();
         user.setId(String.valueOf(System.currentTimeMillis()));

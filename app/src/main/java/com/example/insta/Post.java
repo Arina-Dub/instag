@@ -8,7 +8,7 @@ public class Post {
     private String userId;
     private String username;
     private String imageUrl;
-    private int imageResource; // Добавляем поле для ресурсов изображений
+    private int imageResource; 
     private String caption;
     private long timestamp;
     private List<String> likes;
@@ -16,7 +16,7 @@ public class Post {
 
     public Post() {
         this.likes = new ArrayList<>();
-        this.imageResource = -1; // -1 означает, что ресурс не установлен
+        this.imageResource = -1; 
     }
 
     public Post(String id, String userId, String username, String imageUrl, String caption) {
@@ -29,7 +29,6 @@ public class Post {
         this.timestamp = System.currentTimeMillis();
     }
 
-    // Новый конструктор для работы с ресурсами изображений
     public Post(String id, String userId, String username, int imageResource, String caption) {
         this();
         this.id = id;
@@ -40,7 +39,6 @@ public class Post {
         this.timestamp = System.currentTimeMillis();
     }
 
-    // Геттеры и сеттеры
     public String getId() { return id; }
     public void setId(String id) { this.id = id; }
 
@@ -70,7 +68,6 @@ public class Post {
     public int getCommentsCount() { return commentsCount; }
     public void setCommentsCount(int commentsCount) { this.commentsCount = commentsCount; }
 
-    // Методы для работы с лайками
     public void addLike(String userId) {
         if (!likes.contains(userId)) {
             likes.add(userId);
@@ -85,7 +82,6 @@ public class Post {
         return likes.contains(userId);
     }
 
-    // Проверка, используется ли ресурс изображения
     public boolean hasImageResource() {
         return imageResource != -1;
     }

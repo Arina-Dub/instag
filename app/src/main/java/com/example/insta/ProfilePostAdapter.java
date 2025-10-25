@@ -36,7 +36,7 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
         Post post = postList.get(position);
 
         if (post != null) {
-            // Устанавливаем изображение поста
+
             if (post.hasImageResource()) {
                 holder.ivPostImage.setImageResource(post.getImageResource());
             } else {
@@ -77,7 +77,6 @@ public class ProfilePostAdapter extends RecyclerView.Adapter<ProfilePostAdapter.
         return postList.size();
     }
 
-    // Метод для обновления постов
     public void updatePosts(List<Post> newPosts) {
         postList.clear();
         postList.addAll(newPosts);

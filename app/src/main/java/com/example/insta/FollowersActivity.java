@@ -48,13 +48,11 @@ public class FollowersActivity extends AppCompatActivity {
                 }
             });
 
-            // Получаем тип из интента
             type = getIntent().getStringExtra("type");
             if (type == null) {
                 type = "followers";
             }
 
-            // Устанавливаем заголовок
             if ("followers".equals(type)) {
                 tvTitle.setText("Подписчики");
             } else {
@@ -91,11 +89,7 @@ public class FollowersActivity extends AppCompatActivity {
         List<User> allUsers = userManager.getAllUsers();
         List<User> filteredUsers = new ArrayList<>();
 
-        // В реальном приложении здесь должна быть логика получения подписчиков/подписок из базы
-        // Для демо используем тестовые данные
-
         if ("followers".equals(type)) {
-            // Показываем всех пользователей кроме текущего как подписчиков
             User currentUser = userManager.getCurrentUser();
             for (User user : allUsers) {
                 if (currentUser == null || !user.getUsername().equals(currentUser.getUsername())) {
@@ -103,7 +97,6 @@ public class FollowersActivity extends AppCompatActivity {
                 }
             }
         } else {
-            // Показываем всех пользователей кроме текущего как подписки
             User currentUser = userManager.getCurrentUser();
             for (User user : allUsers) {
                 if (currentUser == null || !user.getUsername().equals(currentUser.getUsername())) {
